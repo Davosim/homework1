@@ -1,20 +1,20 @@
 package homework.dynamicArray;
 
 public class DynamicArray {
-  private   int[] array = new int[10];
-   private int size = 0;
+    private int[] array = new int[10];
+    private int size = 0;
 
-   public void add(int valeum) {
-        array[size] = valeum;
-        size++;
+    public void add(int valeum) {
         if (size == array.length) {
             extend();
         }
+        array[size] = valeum;
+        size++;
 
 
     }
 
-   private void extend() {
+    private void extend() {
         int[] newArray = new int[array.length + 10];
         for (int i = 0; i < array.length; i++) {
             newArray[i] = array[i];
@@ -24,7 +24,7 @@ public class DynamicArray {
     }
 
 
-  public   int getByIndex(int index) {
+    public int getByIndex(int index) {
         if (index > array.length) {
             System.out.println();
 
@@ -33,7 +33,7 @@ public class DynamicArray {
         return -1;
     }
 
-  public   void print() {
+    public void print() {
         for (int i = 0; i < array.length; i++) {
             if (array[i] != 0)
                 System.out.print(array[i] + " ");
