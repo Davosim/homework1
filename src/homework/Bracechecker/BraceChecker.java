@@ -2,6 +2,7 @@ package homework.Bracechecker;
 
 public class BraceChecker {
     String test;
+
     Stack stack = new Stack();
 
 
@@ -11,13 +12,15 @@ public class BraceChecker {
 
     public void check() {
         char[] chars = test.toCharArray();
+
         for (int i = 0; i < test.length(); i++) {
             switch (chars[i]) {
-                case '{':
                 case '[':
                 case '(':
+                case '{':
                     stack.push(chars[i]);
                     break;
+
                 case '}':
                     char pop = stack.pop();
                     if (pop != '{')
@@ -30,15 +33,18 @@ public class BraceChecker {
                     break;
                 case ')':
                     char pop2 = stack.pop();
-                    if (pop2 != '(' ){
+                    if (pop2 != '(') {
                         System.out.println("Error: opened " + pop2 + " but closed ) at " + i);
                     }
-
                     break;
                 default:
-                    break;
+
             }
         }
+        while (!stack.isEmpty()) {
+            System.out.println("Error: opened " + stack.pop() + " but dont closed");
+        }
+
     }
 }
 
