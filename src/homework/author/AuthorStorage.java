@@ -16,10 +16,8 @@ public class AuthorStorage {
 
     public void extend() {
         Author[] newArray = new Author[array.length + 10];
-        for (int i = 0; i < array.length; i++) {
-            newArray[i] = array[i];
 
-        }
+        System.arraycopy(array, 0, newArray, 0, array.length);
         array = newArray;
     }
 
@@ -34,9 +32,28 @@ public class AuthorStorage {
     }
 
     public void print() {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] != null)
-                System.out.print(array[i] + " ");
+        for (int i = 0; i < size; i++) {
+            System.out.println(array[i]);
+        }
+    }
+
+
+    public void searchAuthor(String keyword) {
+        for (int i = 0; i < size; i++) {
+            if (array[i].getName().contains(keyword) || array[i].getSurname().contains(keyword)) {
+                System.out.println(array[i]);
+            }
+
+        }
+    }
+
+
+    public void searchAuthorByAge(int minAge, int maxAge) {
+        for (int i = 0; i < size; i++) {
+            if (array[i].getAge() >= minAge && array[i].getAge() <= maxAge) {
+
+                System.out.println(array[i]);
+            }
         }
     }
 }
