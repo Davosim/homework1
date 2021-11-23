@@ -5,16 +5,19 @@ public class Book {
     private String description;
     private double price;
     private int count;
+    private Author author;
+
 
     public Book() {
 
     }
 
-    public Book(String title, String description, double price, int count) {
+    public Book(String title, String description, double price, int count, Author author) {
         this.title = title;
         this.description = description;
         this.price = price;
         this.count = count;
+        this.author=author;
 
 
     }
@@ -27,7 +30,9 @@ public class Book {
         this.title = title;
     }
 
-    public String getDescription() { return description; }
+    public String getDescription() {
+        return description;
+    }
 
     public void setDescription(String description) {
         this.description = description;
@@ -36,6 +41,7 @@ public class Book {
     public double getPrice() {
         return price;
     }
+
 
     public void setPrice(double price) {
         this.price = price;
@@ -49,6 +55,15 @@ public class Book {
         this.count = count;
     }
 
+    public Author getauthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author=author;
+    }
+
+
     @Override
     public String toString() {
         return "Book{" +
@@ -56,6 +71,7 @@ public class Book {
                 ", description='" + description + '\'' +
                 ", price='" + price + '\'' +
                 ", count=" + count +
+                ", author='" + author + '\'' +
                 '}';
     }
 

@@ -3,8 +3,8 @@ package homework.author;
 public class AuthorStorage {
 
 
-    private Author[] array = new Author[10];
-    private int size = 0;
+    private static Author[] array = new Author[10];
+    static int size = 0;
 
     public void add(Author author) {
         if (size == array.length) {
@@ -38,13 +38,14 @@ public class AuthorStorage {
     }
 
 
-    public void searchAuthor(String keyword) {
+    public Author searchAuthor(String name, String srname) {
         for (int i = 0; i < size; i++) {
-            if (array[i].getName().contains(keyword) || array[i].getSurname().contains(keyword)) {
-                System.out.println(array[i]);
+            if (array[i].getName().equalsIgnoreCase(name) || array[i].getSurname().equalsIgnoreCase(srname)) {
+                return array[i];
             }
-
+            System.out.println("we dont have such an author");
         }
+        return null;
     }
 
 
@@ -56,4 +57,31 @@ public class AuthorStorage {
             }
         }
     }
+
+    public Author serchByEmail(String email) {
+        Author author = null;
+        for (int i = 0; i < size; i++) {
+            if (array[i].getEmail().equalsIgnoreCase(email)) {
+                author = array[i];
+            }
+
+        }
+        return author;
+    }
+
+    public void autorChange(String email, String name, String surname) {
+
+        boolean emailCom = false;
+        for (int i = 0; i < size; i++) {
+            if (array[i].getEmail().equalsIgnoreCase(email)) {
+                emailCom = true;
+                array[i].setName(name);
+                array[i].setSurname(surname);
+            }
+        }
+        if (emailCom = false) System.out.println("asd");
+
+    }
+
 }
+
